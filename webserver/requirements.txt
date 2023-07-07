@@ -1,0 +1,7 @@
+wheel
+requests
+pandas
+matplotlib
+kaleido
+flask
+uwsgi
