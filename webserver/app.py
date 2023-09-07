@@ -1,6 +1,6 @@
-import flask
 from flask import Flask
 import libs
+from flask import Response
 
 app = Flask(__name__)
 
@@ -15,13 +15,11 @@ def home():
     return "<h1 style='color:blue'>Hello World!</h1>"
 
 
-@app.route("/esg-image")
+@app.route("/esg.png")
 def esg():
-    libs.esg_image_init()
+    img = libs.esg_image_init()
 
-    img = open("./static/esg.svg", "r")
-
-    return flask.Response(img, mimetype="image/svg+xml")
+    return Response(img.getvalue(), mimetype="image/png")
 
 
 if __name__ == "__main__":

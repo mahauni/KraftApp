@@ -1,3 +1,6 @@
+import base64
+import io
+
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -5,9 +8,7 @@ import matplotlib.pyplot as plt
 
 def esg_image_init():
     URL = "http://api:8080/esg"
-
     r = requests.get(url=URL)
-
     data = r.json()
 
     E = 0
@@ -29,4 +30,10 @@ def esg_image_init():
     plt.xlabel("ESG")
     plt.ylabel("numbers")
 
-    plt.savefig("./static/esg.svg", format="svg")
+    img = io.BytesIO()
+
+    plt.savefig(img, format="png")
+
+    img.seek(0)
+
+    return img
