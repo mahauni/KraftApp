@@ -1,22 +1,16 @@
-const btn = document.getElementById('btn');
 
-const image = document.getElementById('esg-img');
 
-btn.addEventListener('click', async () => {
-  // await the promise
-  await refreshImage(
-    'http://127.0.0.1:5000/esg.png',
-  );
+let action = document.getElementById("action");
+let actionDesc = document.getElementById("desc-action");
+let esg = document.getElementById("esg");
+let esgDesc = document.getElementById("esg-desc");
 
-  console.log('image is refreshed =)');
+
+
+document.querySelector('esgForm').addEventListener('submit', function () {
+  console.log(action.value)
+  console.log(actionDesc.value)
+  console.log(esg.value)
+  console.log(esgDesc.value)
+
 });
-
-async function refreshImage(url) {
-  await fetch(url, {cache: 'reload', mode: 'no-cors'});
-
-  document
-    .querySelectorAll(`img[src='${url}']`)
-    .forEach(img => (img.src = url));
-
-  console.log('image refreshed succesfully');
-}

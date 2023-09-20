@@ -22,5 +22,10 @@ def esg():
     return Response(img.getvalue(), mimetype="image/png")
 
 
+@app.route("/problem.png")
+def problem():
+    return "This is where image of probrem is"
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
